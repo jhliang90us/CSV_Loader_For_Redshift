@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Csv loader for redshift : Loads CSV file to Amazon-Redshift table from Windows CLI">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Csv loader for redshift</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/alexbuz/CSV_Loader_For_Redshift">View on GitHub</a>
+
+          <h1 id="project_title">Csv loader for redshift</h1>
+          <h2 id="project_tagline">Loads CSV file to Amazon-Redshift table from Windows CLI</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/alexbuz/CSV_Loader_For_Redshift/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/alexbuz/CSV_Loader_For_Redshift/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="csv-file-loader-for-amazon-redshift-db" class="anchor" href="#csv-file-loader-for-amazon-redshift-db" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CSV File Loader for Amazon Redshift DB.</h1>
+
+<p>Simple CSV file to Amazon-Redshift table loader.</p>
+
+<ul>
+<li>Input file has to be located on your Windows desktop (not S3).</li>
+<li>Execute loader from Windows CLI (cmd/command line)</li>
+</ul>
+
+<h2>
+<a id="version" class="anchor" href="#version" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Version</h2>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Platform</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>64bit</td>
+<td>[0.1.0 beta]</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="purpose" class="anchor" href="#purpose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purpose</h2>
+
+<ul>
+<li>Ad-hoc CSV file load to Amazon Redshift table.</li>
+</ul>
+
+<h2>
+<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it works</h2>
+
+<ul>
+<li>File is staged on S3 prior to load to Redshift</li>
+<li>Optional upload to Reduced Redundancy storage (not RR by default).</li>
+<li>Optional "make it public" after upload (private by default)</li>
+<li>S3 Key defaulted to transfer file name.</li>
+<li>Load is done using COPY command</li>
+<li>Target Redshift table has to exist</li>
+<li>It's a Python/boto/psycopg2 script
+
+<ul>
+<li>Boto S3 docs: <a href="http://boto.cloudhackers.com/en/latest/ref/s3.html">http://boto.cloudhackers.com/en/latest/ref/s3.html</a>
+</li>
+<li>psycopg2 docs: <a href="http://initd.org/psycopg/docs/">http://initd.org/psycopg/docs/</a>
+</li>
+</ul>
+</li>
+<li>Executable is created using <a href="http://www.pyinstaller.org/">pyInstaller</a>
+</li>
+</ul>
+
+<h2>
+<a id="audience" class="anchor" href="#audience" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Audience</h2>
+
+<p>Database/ETL developers, Data Integrators, Data Engineers, Business Analysts, AWS Developers, DevOps, </p>
+
+<h2>
+<a id="designated-environment" class="anchor" href="#designated-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designated Environment</h2>
+
+<p>Pre-Prod (UAT/QA/DEV)</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<pre><code>## Load CSV file to Amazon Redshift table.
+##
+## Load % progress outputs to the screen.
+##
+Usage:  
+  set AWS_ACCESS_KEY_ID=&lt;you access key&gt;
+  set AWS_SECRET_ACCESS_KEY=&lt;you secret key&gt;
+  set REDSHIFT_CONNECT_STRING="dbname='***' port='5439' user='***' password='***' host='mycluster.***.redshift.amazonaws.com'"  
+  csv_loader_for_redshift.py &lt;file_to_transfer&gt; &lt;bucket_name&gt; [&lt;use_rr&gt;] [&lt;public&gt;]
+                         [&lt;delim&gt;] [&lt;quote&gt;] [&lt;to_table&gt;] [&lt;gzip_source_file&gt;]
+
+    --use_rr -- Use reduced redundancy storage (False).
+    --public -- Make uploaded files public (False).
+    --delim  -- CSV file delimiter (',').
+    --quote  -- CSV quote ('"').
+    --to_table  -- Target Amazon-Redshit table name.
+    --gzip_source_file  -- gzip input CVS file before upload to Amazon-S3 (False).
+
+    Input filename will be used for S3 key name.
+
+    Boto S3 docs: http://boto.cloudhackers.com/en/latest/ref/s3.html
+    psycopg2 docs: http://initd.org/psycopg/docs/
+
+"""
+
+</code></pre>
+
+<h2>
+<a id="environment-variables" class="anchor" href="#environment-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment variables</h2>
+
+<ul>
+<li>Set the following environment variables:</li>
+</ul>
+
+<pre><code>set AWS_ACCESS_KEY_ID=&lt;you access key&gt;
+set AWS_SECRET_ACCESS_KEY=&lt;you secret key&gt;
+
+set REDSHIFT_CONNECT_STRING="dbname='***' port='5439' user='***' password='***' host='mycluster.***.redshift.amazonaws.com'"  
+</code></pre>
+
+<h2>
+<a id="example-file-load-into-redshift-table-test2" class="anchor" href="#example-file-load-into-redshift-table-test2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example file load into Redshift table <code>test2</code>
+</h2>
+
+<ul>
+<li>examples\Load_CSV_To_Redshift_Table.bat</li>
+</ul>
+
+<pre><code>set AWS_ACCESS_KEY_ID=&lt;you access key&gt;
+set AWS_SECRET_ACCESS_KEY=&lt;you secret key&gt;
+set REDSHIFT_CONNECT_STRING="dbname='***' port='5439' user='***' password='***' host='mycluster.***.redshift.amazonaws.com'"  
+
+cd c:\tmp\CSV_Loader
+csv_loader_for_redshift.exe c:\tmp\data.csv test123 -r -d "," -t test2 -z
+
+</code></pre>
+
+<ul>
+<li>resutl.log (Load_CSV_To_Redshift_Table.bat &gt; resutl.log)</li>
+</ul>
+
+<pre><code>S3        | data.csv.gz | 100%
+Redshift  | test2       | DONE
+Time elapsed: 5.7 seconds
+
+</code></pre>
+
+<h3>
+<a id="target-redshift-table-ddl" class="anchor" href="#target-redshift-table-ddl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Target Redshift table DDL</h3>
+
+<pre><code>CREATE TABLE test2 (id integer , num integer, data varchar,num2 integer, data2 varchar,num3 
+integer, data3 varchar,num4 integer, data4 varchar);
+
+</code></pre>
+
+<h3>
+<a id="test-data" class="anchor" href="#test-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test data</h3>
+
+<ul>
+<li>Test data is in file examples\data.csv</li>
+</ul>
+
+<h2>
+<a id="sources" class="anchor" href="#sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sources</h2>
+
+<ul>
+<li>Will add as soon as I clean em up and remove all the passwords and AWS keys :-)).</li>
+</ul>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h2>
+
+<ul>
+<li><code>git clone https://github.com/alexbuz/CSV_Loader_For_Redshift</code></li>
+<li>
+<a href="https://github.com/alexbuz/CSV_Loader_For_Redshift/archive/master.zip">Master Release</a> -- <code>csv_loader_for_redshift 0.1.0</code>
+</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Csv loader for redshift maintained by <a href="https://github.com/alexbuz">alexbuz</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
