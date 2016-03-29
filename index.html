@@ -131,11 +131,14 @@ Usage:
 
 </code></pre>
 
-<h2>
-<a id="environment-variables" class="anchor" href="#environment-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment variables</h2>
+<h1>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h1>
+
+<h3>
+<a id="environment-variables" class="anchor" href="#environment-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment variables</h3>
 
 <ul>
-<li>Set the following environment variables:</li>
+<li>Set the following environment variables (for all tests:</li>
 </ul>
 
 <pre><code>set AWS_ACCESS_KEY_ID=&lt;you access key&gt;
@@ -144,9 +147,9 @@ set AWS_SECRET_ACCESS_KEY=&lt;you secret key&gt;
 set REDSHIFT_CONNECT_STRING="dbname='***' port='5439' user='***' password='***' host='mycluster.***.redshift.amazonaws.com'"  
 </code></pre>
 
-<h2>
-<a id="example-file-load-into-redshift-table-test2" class="anchor" href="#example-file-load-into-redshift-table-test2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example file load into Redshift table <code>test2</code>
-</h2>
+<h3>
+<a id="csv-file-upload-into-redshift-table-test2" class="anchor" href="#csv-file-upload-into-redshift-table-test2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CSV file upload into Redshift table <code>test2</code>
+</h3>
 
 <ul>
 <li>examples\Load_CSV_To_Redshift_Table.bat</li>
@@ -171,30 +174,33 @@ Time elapsed: 5.7 seconds
 
 </code></pre>
 
-<h3>
-<a id="target-redshift-table-ddl" class="anchor" href="#target-redshift-table-ddl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Target Redshift table DDL</h3>
+<h2>
+<a id="test-prerequisits" class="anchor" href="#test-prerequisits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test prerequisits.</h2>
+
+<h4>
+<a id="target-redshift-table-ddl" class="anchor" href="#target-redshift-table-ddl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Target Redshift table DDL</h4>
 
 <pre><code>CREATE TABLE test2 (id integer , num integer, data varchar,num2 integer, data2 varchar,num3 
 integer, data3 varchar,num4 integer, data4 varchar);
 
 </code></pre>
 
-<h3>
-<a id="test-data" class="anchor" href="#test-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test data</h3>
+<h4>
+<a id="test-data" class="anchor" href="#test-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test data</h4>
 
 <ul>
 <li>Test data is in file examples\data.csv</li>
 </ul>
 
-<h2>
-<a id="sources" class="anchor" href="#sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sources</h2>
+<h3>
+<a id="sources" class="anchor" href="#sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sources</h3>
 
 <ul>
 <li>Will add as soon as I clean em up and remove all the passwords and AWS keys :-)).</li>
 </ul>
 
-<h2>
-<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h2>
+<h3>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h3>
 
 <ul>
 <li><code>git clone https://github.com/alexbuz/CSV_Loader_For_Redshift</code></li>
