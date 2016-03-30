@@ -217,6 +217,49 @@ integer, data3 varchar,num4 integer, data4 varchar);
 <a href="https://github.com/alexbuz/CSV_Loader_For_Redshift/archive/master.zip">Master Release</a> -- <code>csv_loader_for_redshift 0.1.0</code>
 </li>
 </ul>
+
+<h1>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FAQ</h1>
+
+<h4>
+<a id="can-it-load-csv-file-from-windows-desktop-to-amazon-redshift" class="anchor" href="#can-it-load-csv-file-from-windows-desktop-to-amazon-redshift" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can it load CSV file from Windows desktop to Amazon Redshift.</h4>
+
+<p>Yes. This is the main purpose of the <code>CSV Loader for Redshift</code>.</p>
+
+<h4>
+<a id="can-developers-integrate-csv-loader-into-their-etl-pipelines" class="anchor" href="#can-developers-integrate-csv-loader-into-their-etl-pipelines" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can developers integrate CSV loader into their ETL pipelines?</h4>
+
+<p>Yes. Assuming they are doing it on OS Windows.</p>
+
+<h4>
+<a id="how-fast-is-data-upload-using-csv-loader-for-redshift" class="anchor" href="#how-fast-is-data-upload-using-csv-loader-for-redshift" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How fast is data upload using <code>CSV Loader for Redshift</code>?</h4>
+
+<p>As fast as any AWS API provided by Amazon.</p>
+
+<h4>
+<a id="how-to-inscease-upload-speed" class="anchor" href="#how-to-inscease-upload-speed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to inscease upload speed?</h4>
+
+<p>Compress input file. Provide <code>-z</code> or <code>--gzip_source_file</code> arg in command line.</p>
+
+<h4>
+<a id="what-are-the-other-ways-to-upload-file-to-redshift" class="anchor" href="#what-are-the-other-ways-to-upload-file-to-redshift" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What are the other ways to upload file to Redshift?</h4>
+
+<p>You can use 'aws s3api' and psql COPY command to do pretty much the same.</p>
+
+<h4>
+<a id="does-it-delete-file-from-s3-after-upload" class="anchor" href="#does-it-delete-file-from-s3-after-upload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Does it delete file from S3 after upload?</h4>
+
+<p>No</p>
+
+<h4>
+<a id="does-it-create-target-redshift-table" class="anchor" href="#does-it-create-target-redshift-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Does it create target Redshift table?</h4>
+
+<p>No</p>
+
+<h4>
+<a id="is-there-an-option-to-compress-input-csv-file-before-upload" class="anchor" href="#is-there-an-option-to-compress-input-csv-file-before-upload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Is there an option to compress input CSV file before upload?</h4>
+
+<p>Yes. Use <code>-z</code> or <code>--gzip_source_file</code> argument to compress input file</p>
       </section>
     </div>
 
