@@ -34,11 +34,20 @@
         <h1>
 <a id="csv-file-loader-for-amazon-redshift-db" class="anchor" href="#csv-file-loader-for-amazon-redshift-db" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CSV File Loader for Amazon Redshift DB.</h1>
 
-<p>Simple CSV file to Amazon-Redshift table loader.</p>
+<p>Loads CSV file to Amazon-Redshift table.</p>
+
+<p>Features:</p>
 
 <ul>
-<li>Input file has to be located on your Windows desktop (not S3).</li>
-<li>Execute loader from Windows CLI (cmd/command line)</li>
+<li>Loads local CSV file to Amazon Redshift.</li>
+<li>No need to preload your data to S3 prior to insert to Redshift.</li>
+<li>No need for Amazon AWS CLI.</li>
+<li>Works from your OS Windows desktop (command line).</li>
+<li>It's executable (csv_loader_for_redshift.exe)  - no need for Python install.</li>
+<li>It's 32 bit - it will work on any vanilla Windows.</li>
+<li>AWS Access Keys are not passed as arguments. </li>
+<li>Written using Python/boto/PyInstaller.</li>
+<li>
 </ul>
 
 <h2>
