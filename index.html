@@ -239,12 +239,18 @@ integer, data3 varchar,num4 integer, data4 varchar);
 <h4>
 <a id="how-to-inscease-upload-speed" class="anchor" href="#how-to-inscease-upload-speed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to inscease upload speed?</h4>
 
-<p>Compress input file. Provide <code>-z</code> or <code>--gzip_source_file</code> arg in command line.</p>
+<p>Compress input file or provide <code>-z</code> or <code>--gzip_source_file</code> arg in command line and this tool will compress it for you before upload to S3.</p>
 
 <h4>
 <a id="what-are-the-other-ways-to-upload-file-to-redshift" class="anchor" href="#what-are-the-other-ways-to-upload-file-to-redshift" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What are the other ways to upload file to Redshift?</h4>
 
 <p>You can use 'aws s3api' and psql COPY command to do pretty much the same.</p>
+
+<h4>
+<a id="can-i-just-zip-it-using-windows-file-explorer" class="anchor" href="#can-i-just-zip-it-using-windows-file-explorer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can I just zip it using Windows File Explorer?</h4>
+
+<p>No, Redshift will not recognize *.zip file format.
+You have to <code>gzip</code> it. You can use 7-Zip to do that.</p>
 
 <h4>
 <a id="does-it-delete-file-from-s3-after-upload" class="anchor" href="#does-it-delete-file-from-s3-after-upload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Does it delete file from S3 after upload?</h4>
@@ -259,7 +265,49 @@ integer, data3 varchar,num4 integer, data4 varchar);
 <h4>
 <a id="is-there-an-option-to-compress-input-csv-file-before-upload" class="anchor" href="#is-there-an-option-to-compress-input-csv-file-before-upload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Is there an option to compress input CSV file before upload?</h4>
 
-<p>Yes. Use <code>-z</code> or <code>--gzip_source_file</code> argument to compress input file</p>
+<p>Yes. Use <code>-z</code> or <code>--gzip_source_file</code> argument so the tool does compression for you.</p>
+
+<h4>
+<a id="explain-first-step-of-data-load" class="anchor" href="#explain-first-step-of-data-load" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Explain first step of data load?</h4>
+
+<p>The CSV you provided is getting preloaded to Amazon-S3.
+It doesn't have to be made public for load to Redshift. 
+It can be compressed or uncompressed.
+Your input file is getting compressed (optional) and uploaded to S3 using credentials you set in shell.</p>
+
+<h4>
+<a id="explain-second-step-of-data-load-how-data-is-loaded-to-amazon-redshift" class="anchor" href="#explain-second-step-of-data-load-how-data-is-loaded-to-amazon-redshift" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Explain second step of data load. How data is loaded to Amazon Redshift?</h4>
+
+<p>You Redshift cluster has to be open to the world (accessible via port 5439 from internet).
+It uses PostgreSQL COPY command to load file located on S3 into Redshift table.</p>
+
+<h4>
+<a id="can-i-use-winzip-or-7-zip" class="anchor" href="#can-i-use-winzip-or-7-zip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can I use WinZip or 7-zip</h4>
+
+<p>Yes, but you have to use 'gzip' compression type.</p>
+
+<h4>
+<a id="what-technology-was-used-to-create-this-tool" class="anchor" href="#what-technology-was-used-to-create-this-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What technology was used to create this tool</h4>
+
+<p>I used Python, Boto, and psycopg2 to write it.
+Boto is used to upload file to S3. 
+psycopg2 is used to establish ODBC connection with Redshift clusted and execute <code>COPY</code> command.</p>
+
+<h4>
+<a id="where-are-the-sources" class="anchor" href="#where-are-the-sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Where are the sources?</h4>
+
+<p>Please, contact me for sources.</p>
+
+<h4>
+<a id="can-you-modify-functionality-and-add-features" class="anchor" href="#can-you-modify-functionality-and-add-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can you modify functionality and add features?</h4>
+
+<p>Yes, please, ask me for new features.</p>
+
+<h4>
+<a id="can-you-create-similarcustom-data-tool-for-our-business" class="anchor" href="#can-you-create-similarcustom-data-tool-for-our-business" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can you create similar/custom data tool for our business?</h4>
+
+<p>Yes, you can PM me here or email at <code>alex_buz@yahoo.com</code>.
+I'll get back to you within hours.</p>
       </section>
     </div>
 
