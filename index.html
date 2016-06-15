@@ -42,13 +42,14 @@ Loads CSV file to Amazon-Redshift table from Windows command line.
 
 <ul>
 <li>Loads local (to your Windows desktop) CSV file to Amazon Redshift.</li>
-<li>No need to preload your data to S3 prior to insert to Redshift.</li>
+<li>Script preloads your data to S3 prior to insert to Redshift.</li>
 <li>No need for Amazon AWS CLI.</li>
 <li>Works from your OS Windows desktop (command line).</li>
 <li>COPY command configurable via <a href="https://github.com/alexbuz/CSV_Loader_For_Redshift/blob/master/dist-64bit/include/loader.py">loader script</a>
 </li>
 <li>It's executable (csv_loader_for_redshift.exe)  - no need for Python install.</li>
 <li>It will work on any vanilla DOS for 64bit Windows.</li>
+<li>Modify <a href="https://github.com/alexbuz/CSV_Loader_For_Redshift/blob/master/dist-64bit/include/loader.py">loader.py</a> at will.</li>
 <li>AWS Access Keys are not passed as arguments. </li>
 <li>Written using Python/boto/psycopg2</li>
 <li>Compiled using PyInstaller.</li>
@@ -170,7 +171,7 @@ set REDSHIFT_CONNECT_STRING="dbname='***' port='5439' user='***' password='***' 
 </h3>
 
 <pre><code>cd c:\Python35-32\PROJECTS\csv2redshift
-python csv_loader_for_redshift.py Crime.csv pythonuploadtest1 ^
+csv_loader_for_redshift.exe Crime.csv testbucket ^
     -r ^
     -p ^
     -d "," ^
